@@ -1,10 +1,7 @@
-
 const audio = document.getElementById('background-audio');
-let isAudioPlayed = false;
 
-
+// Play audio on first click
 document.addEventListener('click', () => {
-    const audio = document.getElementById('background-audio');
     if (audio.paused) {
         audio.play().catch(err => {
             console.error("Audio playback failed: ", err);
