@@ -4,13 +4,10 @@ let isAudioPlayed = false;
 
 
 document.addEventListener('click', () => {
-    if (!isAudioPlayed) {
-        audio.play().catch(error => {
-            console.error('Audio playback failed:', error);
+    const audio = document.getElementById('background-audio');
+    if (audio.paused) {
+        audio.play().catch(err => {
+            console.error("Audio playback failed: ", err);
         });
-        isAudioPlayed = true;
-        alert('Audio started playing. Refresh to play again.');
-    } else {
-        alert('Audio already played. Refresh to play again.');
     }
 });
