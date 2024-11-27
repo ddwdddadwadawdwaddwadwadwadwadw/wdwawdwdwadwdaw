@@ -1,42 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stole.cc/k</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #container {
+            padding: 15px;
+            border: 4px solid red;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(26, 26, 26, 0.8);
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+        }
+
+        #pfp-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        #audio-container {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .audio-player {
+            width: 100%;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+
+        .audio-player button {
+            background-color: #FF3333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .audio-player button:hover {
+            background-color: #cc0000;
+        }
+
+        .progress-container {
+            width: 60%;
+            height: 8px;
+            background-color: #555;
+            border-radius: 5px;
+            position: relative;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: red;
+            border-radius: 5px;
+            transition: width 0.1s;
+        }
+
+        .volume-control {
+            width: 80px;
+            margin-top: 10px;
+        }
+
+        .forward-btn {
+            font-size: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .audio-player .play-btn {
+            font-size: 20px;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .audio-player .play-btn:hover {
+            color: #FF3333;
+        }
+
+        .progress-container:hover {
+            background-color: #444;
+        }
+
+        .audio-player .play-btn,
+        .audio-player .pause-btn {
+            display: none;
+        }
+
+        .audio-player .paused .play-btn {
+            display: inline-block;
+        }
+
+        .audio-player .playing .pause-btn {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
+    <video autoplay muted loop id="background-video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-   
-    <div class="video-container">
-        <video autoplay muted loop id="video-background">
-            <source src="kl.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+    <div id="container">
+        <div id="content">
+            <div id="pfp-container">
+                <img src="kl.png" alt="Profile Picture" id="profile-pfp">
+            </div>
+            <h1>kl</h1>
+            <p><strong>Owner</strong></p>
 
-   =
-    <div class="glass-pfp-container">
-        <div class="pfp-box">
-            <img src="kl.png" alt="Profile Picture" class="profile-pic">
-            <h2 class="username">k<span class="sparkles">✨</span></h2>
-            <div class="social-icons">
-                <a href="https://t.me/Sexualinformat" target="_blank">
-                    <img src="https://media.discordapp.net/attachments/1304944937757839390/1310677715203919912/telegram.png?ex=6746173e&is=6744c5be&hm=cad05b3d81d679a1b7ab3c78f9db89d7ce5d255e372a59c5ad61593cfe2d3747&=&format=webp&quality=lossless&width=359&height=350" alt="Telegram" class="social-icon">
-                </a>
-                <a href="http://discord.gg/fyi" target="_blank">
-                    <img src="https://media.discordapp.net/attachments/1304944937757839390/1310678809250496654/file_2.png?ex=67461843&is=6744c6c3&hm=9fe9ad7ed2710e00cf6bf05a562c6dc3bee7e9e493086adb142012a77c6c907d&=&format=webp&quality=lossless&width=481&height=350" alt="Discord" class="social-icon">
-                </a>
+            <div id="audio-container">
+                <div class="audio-player paused" id="audio-player-container">
+                    <button class="play-btn" id="play-btn">▶</button>
+                    <button class="pause-btn" id="pause-btn">❚❚</button>
+
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+
+                    <audio id="audio-player" preload="auto">
+                        <source src="music.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <button class="forward-btn" id="forward-btn">⏩</button>
+
+                    <input type="range" id="volume-control" class="volume-control" min="0" max="1" step="0.01" value="1">
+                </div>
             </div>
         </div>
     </div>
-    <audio id="background-audio">
-        <source src="audio.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
 
-  
-    <script src="script.js"></script>
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const forwardBtn = document.getElementById('forward-btn');
+        const volumeControl = document.getElementById('volume-control');
+        const audioPlayerContainer = document.getElementById('audio-player-container');
+
+        playBtn.addEventListener('click', () => {
+            audioPlayer.play();
+            audioPlayerContainer.classList.remove('paused');
+            audioPlayerContainer.classList.add('playing');
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            audioPlayer.pause();
+            audioPlayerContainer.classList.remove('playing');
+            audioPlayerContainer.classList.add('paused');
+        });
+
+        forwardBtn.addEventListener('click', () => {
+            audioPlayer.currentTime += 10;
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        progressContainer.addEventListener('click', (e) => {
+            const clickPosition = e.offsetX;
+            const progressWidth = progressContainer.offsetWidth;
+            const newTime = (clickPosition / progressWidth) * audioPlayer.duration;
+            audioPlayer.currentTime = newTime;
+        });
+
+        volumeControl.addEventListener('input', () => {
+            audioPlayer.volume = volumeControl.value;
+        });
+
+        document.body.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                audioPlayerContainer.classList.remove('paused');
+                audioPlayerContainer.classList.add('playing');
+            }
+        });
+
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 's' || e.key === 'u')) {
+                e.preventDefault();
+                alert("GG Skid! You can't save or view source.");
+            }
+        });
+    </script>
 </body>
 </html>
