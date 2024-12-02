@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Hub | stole.cc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: rgb(255, 0, 0);
+            font-family: 'Press Start 2P', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card {
+            width: 350px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            border: 2px solid white;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .profile-card p {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .nav-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #444;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: #f0f0f0;
+            text-shadow: 0 0 10px white;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                color: white;
+            }
+            50% {
+                color: gray;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html">Home</a> | 
+        <a href="plans.html">Plans</a> | 
+        <a href="https://discord.gg/eaNE6Jvf">Discord</a>
+    </div>
+
+    <div class="profile-card">
+        <img src="https://images-ext-1.discordapp.net/external/3cSScsMYuf85dxBmqdWRsOhV4-NaIC05-cPQ9DO75wQ/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/471401647717875713/f94b095db2eea18b89cfa9cabe40b716.webp?format=webp" alt="Profile Avatar">
+        <h2>kl</h2>
+        <p>Rank: Owner</p>
+        <p>Joined: Today</p>
+        <div class="nav-links">
+            <a href="kl/index.html">View Profile</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Stole.cc</p>
+    </div>
+</body>
+</html>
