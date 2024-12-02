@@ -177,5 +177,19 @@ _....------""""""            _..--".-'   \::..     `.
     <div class="footer">
         <p>Stole.cc</p>
     </div>
+
+    <audio id="background-audio">
+        <source src="audio.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('background-audio');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
 </body>
 </html>
