@@ -5,27 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stole.cc</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://media.discordapp.net/attachments/1310717598778003546/1310718060180537414/IMG_0231.gif?ex=67483711&is=6746e591&hm=d71e14f6244f01b6e890731475009fef76c941a690c45993fc9b6cea4f6caa3c&=">
-    <meta property="og:title" content="stole.cc"> 
-    <meta property="og:description" content="priv bio link .">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1310717598778003546/1310718060180537414/IMG_0231.gif?ex=67483711&is=6746e591&hm=d71e14f6244f01b6e890731475009fef76c941a690c45993fc9b6cea4f6caa3c&=">
+    <style>
+        body {
+            background-color: black;
+            color: rgb(255, 0, 0);
+            font-family: 'Press Start 2P', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .users-claimed {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: #1e1e1e;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-y: auto;
+            animation: slideInFromLeft 1.5s ease-out;
+        }
+
+        .users-claimed h3 {
+            text-align: center;
+            margin: 0 0 10px;
+            font-size: 20px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .users-claimed ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .users-claimed li {
+            margin: 10px 0;
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .ascii-art {
+            white-space: pre;
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: #f0f0f0;
+            text-shadow: 0 0 10px white;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                color: white;
+            }
+            50% {
+                color: gray;
+            }
+        }
+    </style>
 </head>
 <body>
-   
-    <video autoplay muted loop id="background-video">
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="users-claimed">
+        <h3>Users Claimed</h3>
+        <ul>
+            <li>kl</li>
+        </ul>
+    </div>
 
-    <div id="container">
-        <div id="content">
-            <img src="https://media.discordapp.net/attachments/1310717598778003546/1310718234743410759/C56FE5A0-9B71-4824-A810-E8C72558CDB5.png?ex=6748373b&is=6746e5bb&hm=196abdc351901297051ecb18dd2a67cac6a3a80c0a63d52b1e5ae035820fed17&=&format=webp&quality=lossless&width=448&height=448" alt="Icon" class="logo">
-            <h1>STOLE.CC</h1>
-            <p><a href="users.html" class="username">users</a></p>
-            <p><a href="http://discord.gg/fyi" class="username">discord</a></p>
-           
-        </div>
+    <div class="header">
+        <a href="user.html">Users</a> | 
+        <a href="plans.html">Plans</a> | 
+        <a href="https://discord.gg/eaNE6Jvf">Discord</a>
+    </div>
+
+    <div class="ascii-art">
+        <pre>
+            _..  
+            .qd$$$$bp.
+          .q$$$$$$$$$$m.
+         .$$$$$$$$$$$$$$
+       .q$$$$$$$$$$$$$$$$
+      .$$$$$$$$$$$$P\$$$$;
+    .q$$$$$$$$$P^"_.`;$$$$
+   q$$$$$$$P;\   ,  /$$$$P
+ .$$$P^::Y$/`  _  .:.$$$/
+.P.:..    \ `._.-:.. \$P
+$':.  __.. :   :..    :'
+/:_..::.   `. .:.    .'|
+_::..          T:..   /  :
+.::..             J:..  :  :
+.::..          7:..   F:.. :  ;
+_.::..             |:..   J:.. `./
+_..:::..               /J:..    F:.  : 
+.::::..                .T  \:..   J:.  /
+/:::...               .' `.  \:..   F_o'
+.:::...              .'     \  \:..  J ;
+::::...           .-'`.    _.`._\:..  \'
+':::...         .'  `._7.-'_.-  `\:.   \
+\:::...   _..-'__.._/_.--' ,:.   b:.   \._ 
+`::::..-"_.'-"_..--"      :..   /):.   `.\   
+`-:/"-7.--""            _::.-'P::..    \} 
+_....------""""""            _..--".-'   \::..     `. 
+(::..              _...----"""  _.-'       `---:..    `-.
+\::..      _.-""""   `""""---""                `::...___)
+`\:._.-"""                             fsc
+        </pre>
+    </div>
+
+    <div class="footer">
+        <p>Stole.cc</p>
     </div>
 </body>
 </html>
