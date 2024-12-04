@@ -4,64 +4,214 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #111;
-    font-family: 'Press Start 2P', cursive;
-    color: #ff0000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-}
-
-#background-video {
-    position: absolute;
+.video-background {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     z-index: -1;
+    overflow: hidden;
 }
 
-#container {
-    border: 5px solid red;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
+#bg-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Tahoma', 'Verdana', sans-serif;
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.desktop {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.profile-container {
     text-align: center;
-    background-color: rgba(26, 26, 26, 0.8);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-}
-
-#content {
-    margin-top: 50px;
-}
-
-h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-
-.username {
-    font-size: 24px;
-    text-decoration: none;
-    color: #030202;
-    font-family: 'Press Start 2P', cursive;
-    display: block;
-    margin-top: 10px;
-    transition: color 0.3s;
-}
-
-.username:hover {
-    color: red;
-}
-
-.logo {
-    width: 100px;
-    height: auto;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
     margin-bottom: 20px;
+}
+
+.profile-container:hover {
+    transform: scale(1.1);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 0, 0);
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-size: 16px;
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: #e3e3e3;
+    border: 3px solid #4d6185;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    display: none;
+    flex-direction: column;
+    font-family: 'Tahoma', sans-serif;
+    color: black;
+}
+
+.popup-content {
+    padding: 10px;
+    text-align: center;
+}
+
+.popup-header {
+    background: #4d6185;
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.close-btn {
+    padding: 5px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
+}
+
+.popup-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.popup-name {
+    font-size: 14px;
+}
+
+.popup-description {
+    font-size: 12px;
+    color: #555;
+}
+
+.taskbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: #2f5286;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
+.start-menu {
+    display: flex;
+    align-items: center;
+}
+
+.start-menu img {
+    height: 30px;
+    cursor: pointer;
+}
+
+.taskbar-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.taskbar-icon img {
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.taskbar-icon img:hover {
+    transform: scale(1.1);
+}
+
+.taskbar-clock {
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#popup-kl {
+    display: none;
+}
+
+#popup-cherry {
+    display: none;
+}
+
+.close-btn {
+    padding: 5px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
 }
