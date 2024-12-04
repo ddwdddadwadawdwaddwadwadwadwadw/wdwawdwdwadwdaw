@@ -4,192 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stole.cc</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: black;
-            color: rgb(255, 0, 0);
-            font-family: 'Press Start 2P', monospace;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .users-claimed {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 300px;
-            height: 400px;
-            background-color: #1e1e1e;
-            border: 2px solid white;
-            border-radius: 10px;
-            padding: 20px;
-            overflow-y: auto;
-            animation: slideInFromLeft 1.5s ease-out;
-        }
-
-        .users-claimed h3 {
-            text-align: center;
-            margin: 0 0 10px;
-            font-size: 20px;
-            border-bottom: 2px solid white;
-            padding-bottom: 10px;
-        }
-
-        .users-claimed ul {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-        }
-
-        .users-claimed li {
-            margin: 10px 0;
-            background: #333;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .ascii-art {
-            white-space: pre;
-            margin: 0;
-            opacity: 0;
-            animation: fadeIn 2s ease-in forwards;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .header {
-            position: absolute;
-            top: 10px;
-            width: 100%;
-            text-align: center;
-            animation: slideIn 1.5s ease-out;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: text-shadow 0.3s ease;
-        }
-
-        a:hover {
-            color: #f0f0f0;
-            text-shadow: 0 0 10px white;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 14px;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInFromLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                color: white;
-            }
-            50% {
-                color: gray;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="users-claimed">
-        <h3>Users Claimed</h3>
-        <ul>
-            <li>kl</li>
-        </ul>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <div class="header">
-        <a href="user.html">Users</a> | 
-        <a href="plans.html">Plans</a> | 
-        <a href="https://discord.gg/eaNE6Jvf">Discord</a>
+    <div class="desktop">
+        <div class="profile-container" id="profile-kl">
+            <img src="https://media.discordapp.net/attachments/1312907230734975077/1313583813900898354/IMG_9864.jpg?ex=67515282&is=67500102&hm=8f3854a2a031f4d6eb72704b2840b741b63ed3f67b25b3fe3b7ee5e33d55604f&=&format=webp&width=462&height=462" alt="Profile Avatar" class="profile-avatar">
+            <p class="profile-name">kl</p>
+        </div>
+
+        <div id="popup-kl" class="popup">
+            <div class="popup-content">
+                <img src="https://media.discordapp.net/attachments/1312907230734975077/1313583813900898354/IMG_9864.jpg?ex=67515282&is=67500102&hm=8f3854a2a031f4d6eb72704b2840b741b63ed3f67b25b3fe3b7ee5e33d55604f&=&format=webp&width=462&height=462" alt="Profile Avatar" class="popup-avatar">
+                <p class="popup-name">kl</p>
+                <p class="popup-description">want to kiss me?.</p>
+                <button class="close-btn" id="close-btn-kl">Close</button>
+            </div>
+        </div>
+
+        <div class="profile-container" id="profile-cherry">
+            <img src="https://media.discordapp.net/attachments/1304944937757839390/1314005519681458197/IMG_9583.jpg?ex=67523280&is=6750e100&hm=741a14d384a521abb84b2ab82a2603a4a1cbb87a1027fb29884bcd8ca6b5f7a7&=&format=webp&width=440&height=440" alt="Profile Avatar" class="profile-avatar">
+            <p class="profile-name">cherry</p>
+        </div>
+
+        <div id="popup-cherry" class="popup">
+            <div class="popup-content">
+                <img src="https://media.discordapp.net/attachments/1304944937757839390/1314005519681458197/IMG_9583.jpg?ex=67523280&is=6750e100&hm=741a14d384a521abb84b2ab82a2603a4a1cbb87a1027fb29884bcd8ca6b5f7a7&=&format=webp&width=440&height=440" alt="Profile Avatar" class="popup-avatar">
+                <p class="popup-name">cherry</p>
+                <p class="popup-description">together with you is my favorite place to be.</p>
+                <button class="close-btn" id="close-btn-cherry">Close</button>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <div class="start-menu">
+                <img src="https://i.redd.it/ne6ukkej06t71.png" alt="Start" class="windows-icon">
+            </div>
+            <div class="taskbar-icons">
+                <div class="taskbar-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/152/152759.png" alt="Chrome">
+                </div>
+                <div class="taskbar-icon">
+                    <img src="https://i.redd.it/p4srcp8sbyf71.png" alt="File Explorer">
+                </div>
+                <div class="taskbar-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/2184px-Windows_Settings_icon.svg.png" alt="Settings">
+                </div>
+            </div>
+            <div class="taskbar-clock">
+                <p>12:45 PM</p>
+            </div>
+        </div>
+
+        <div id="snow-container"></div>
     </div>
 
-    <div class="ascii-art">
-        <pre>
-            _..  
-            .qd$$$$bp.
-          .q$$$$$$$$$$m.
-         .$$$$$$$$$$$$$$
-       .q$$$$$$$$$$$$$$$$
-      .$$$$$$$$$$$$P\$$$$;
-    .q$$$$$$$$$P^"_.`;$$$$
-   q$$$$$$$P;\   ,  /$$$$P
- .$$$P^::Y$/`  _  .:.$$$/
-.P.:..    \ `._.-:.. \$P
-$':.  __.. :   :..    :'
-/:_..::.   `. .:.    .'|
-_::..          T:..   /  :
-.::..             J:..  :  :
-.::..          7:..   F:.. :  ;
-_.::..             |:..   J:.. `./
-_..:::..               /J:..    F:.  : 
-.::::..                .T  \:..   J:.  /
-/:::...               .' `.  \:..   F_o'
-.:::...              .'     \  \:..  J ;
-::::...           .-'`.    _.`._\:..  \'
-':::...         .'  `._7.-'_.-  `\:.   \
-\:::...   _..-'__.._/_.--' ,:.   b:.   \._ 
-`::::..-"_.'-"_..--"      :..   /):.   `.\   
-`-:/"-7.--""            _::.-'P::..    \} 
-_....------""""""            _..--".-'   \::..     `. 
-(::..              _...----"""  _.-'       `---:..    `-.
-\::..      _.-""""   `""""---""                `::...___)
-`\:._.-"""                             fsc
-        </pre>
-    </div>
+    <audio id="audio" src="audio.mp3" preload="auto"></audio>
 
-    <div class="footer">
-        <p>Stole.cc</p>
-    </div>
-
-    <audio id="background-audio">
-        <source src="audio.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
-
-    <script>
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById('background-audio');
-            if (audio.paused) {
-                audio.play();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
