@@ -3,133 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Hub | stole.cc</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>KittyCore</title>
     <style>
+        @import url("https://fonts.googleapis.com/css?family=VT323");
+
         body {
-            background-color: #121212;
-            color: rgb(255, 0, 0);
-            font-family: 'Press Start 2P', monospace;
+            font-family: "VT323", monospace;
             margin: 0;
             padding: 0;
+            background: black;
+            color: rgb(0, 0, 0);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            cursor: default;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1;
+            animation: fall linear infinite, drift linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                visibility: visible;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(10px * var(--drift)));
+            }
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
+            z-index: 1000;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .profile-card {
-            width: 350px;
-            padding: 20px;
-            background-color: #1e1e1e;
-            border-radius: 15px;
-            border: 2px solid white;
+        #overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
 
-        .profile-card img {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .profile-container {
             width: 120px;
             height: 120px;
+            background: linear-gradient(135deg, #ff0000, #ff0000);
             border-radius: 50%;
-            border: 2px solid white;
-            margin-bottom: 15px;
-        }
-
-        .profile-card h2 {
-            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
             margin-bottom: 10px;
         }
 
-        .profile-card p {
-            font-size: 14px;
-            color: #aaa;
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .nav-links {
-            margin-top: 20px;
+        .profile-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .username {
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
+        .button-container {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 12px;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
 
-        .nav-links a {
+        .button {
+            background-color: #7a1910;
             color: white;
-            text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-            padding: 5px 10px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: #444;
-        }
-
-        .header {
-            position: absolute;
-            top: 10px;
-            width: 100%;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-transform: uppercase;
             text-align: center;
-            animation: slideIn 1.5s ease-out;
-        }
-
-        a {
-            color: white;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: text-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        a:hover {
-            color: #f0f0f0;
-            text-shadow: 0 0 10px white;
+        .button:hover {
+            background-color: #ff0000;
+            transform: scale(1.05);
         }
 
-        .footer {
+        .image-container img {
+            max-width: 150px;
+            border-radius: 10px;
+            transform: translateY(-20px);
+        }
+
+        .swing-animation {
+            animation: swing 4s infinite ease-in-out;
+        }
+
+        @keyframes swing {
+            0% { transform: rotate(-1deg); }
+            50% { transform: rotate(3deg); }
+            100% { transform: rotate(-1deg); }
+        }
+
+        .spark {
             position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            animation: pulse 2s infinite ease-in-out;
+            width: 4px;
+            height: 4px;
+            background-color: rgba(0, 204, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 1;
+            animation: firework-animation 0.4s ease-out forwards;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                color: white;
+        @keyframes firework-animation {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 1;
             }
-            50% {
-                color: gray;
+            100% {
+                transform: scale(1.5) translate(var(--x), var(--y));
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html">Home</a> | 
-        <a href="plans.html">Plans</a> | 
-        <a href="https://discord.gg/eaNE6Jvf">Discord</a>
-    </div>
 
-    <div class="profile-card">
-        <img src="https://images-ext-1.discordapp.net/external/3cSScsMYuf85dxBmqdWRsOhV4-NaIC05-cPQ9DO75wQ/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/471401647717875713/f94b095db2eea18b89cfa9cabe40b716.webp?format=webp" alt="Profile Avatar">
-        <h2>kl</h2>
-        <p>Rank: Owner</p>
-        <p>Joined: Today</p>
-        <div class="nav-links">
-            <a href="kl/index.html">View Profile</a>
+<div id="overlay" onclick="playMusicAndHideOverlay()">
+    Click to Enter
+</div>
+
+<div class="content">
+    <div class="image-container">
+        <img src="main.jpg" alt="Main Image" class="swing-animation">
+    </div>
+    <div class="profile-section">
+        <div class="profile-container">
+            <img src="emo.png" alt="Profile Picture" class="profile-image">
         </div>
+        <div class="username">kl</div>
     </div>
+    <div class="button-container">
+        <a class="button" href="https://t.me/kittycored" target="_blank" rel="noopener noreferrer">KittyCore</a>
+        <a class="button" href="https://discord.gg/PZdXR6Jm">Discord</a>
+    </div>
+</div>
 
-    <div class="footer">
-        <p>Stole.cc</p>
-    </div>
+<audio id="my_audio" src="https://files.catbox.moe/68sp85.mp3" loop></audio>
+
+<script>
+    const snowflakeContainer = document.body;
+    let snowflakes = [];
+
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+
+        const size = Math.random() * 5 + 2;
+        const leftPosition = Math.random() * 100;
+        const animationDuration = Math.random() * 3 + 3;
+        const animationDelay = Math.random() * 3;
+        const driftDirection = Math.random() > 0.5 ? 1 : -1;
+
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${leftPosition}%`;
+        snowflake.style.animationDuration = `${animationDuration}s`;
+        snowflake.style.animationDelay = `${animationDelay}s`;
+        snowflake.style.setProperty('--drift', driftDirection);
+
+        snowflakeContainer.appendChild(snowflake);
+
+        snowflakes.push(snowflake);
+
+        setTimeout(() => {
+            snowflake.remove();
+            snowflakes = snowflakes.filter(s => s !== snowflake);
+        }, animationDuration * 1000);
+    }
+
+    function showSnowflakes() {
+        setInterval(() => {
+            createSnowflake();
+        }, 100);
+    }
+
+    const overlay = document.getElementById("overlay");
+    const content = document.querySelector(".content");
+    const audio = document.getElementById("my_audio");
+
+    audio.volume = 0.3;
+
+    function playMusicAndHideOverlay() {
+        audio.play();
+        overlay.classList.add("hidden");
+
+        setTimeout(() => {
+            overlay.style.display = "none";
+            content.style.display = "block";
+            showSnowflakes();
+        }, 500);
+    }
+
+    document.body.addEventListener('mousemove', function(event) {
+        createSpark(event.clientX, event.clientY);
+    });
+
+    function createSpark(x, y) {
+        const numSparks = 5;
+        for (let i = 0; i < numSparks; i++) {
+            const spark = document.createElement('div');
+            spark.classList.add('spark');
+
+            const angle = Math.random() * 360;
+            const distance = Math.random() * 50 + 20;
+            const duration = Math.random() * 0.6 + 0.2;
+
+            spark.style.left = `${x - 5}px`;
+            spark.style.top = `${y - 5}px`;
+            spark.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+            spark.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+            spark.style.animationDuration = `${duration}s`;
+
+            document.body.appendChild(spark);
+
+            setTimeout(() => {
+                spark.remove();
+            }, duration * 1000);
+        }
+    }
+</script>
+
 </body>
 </html>
