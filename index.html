@@ -1,185 +1,189 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="icon" href="https://images-ext-1.discordapp.net/external/o5oJnW-HneQdriQe-QNBNxQub4F_9U7602nDwRw7f_g/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1313572818125848706/a_8c19be1eb8235f317d44e0e9e1e5df20.gif">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
-    <meta property="og:title" content="KittyCore - #KittyCore">
-    <meta property="og:image" content="https://images-ext-1.discordapp.net/external/o5oJnW-HneQdriQe-QNBNxQub4F_9U7602nDwRw7f_g/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1313572818125848706/a_8c19be1eb8235f317d44e0e9e1e5df20.gif">
-    <script src="./assets/js/index.js"></script>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stole.cc</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-        }
-        .login-container {
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .windows-logo {
-            width: 100px;
-            height: 100px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/2048px-Windows_logo_-_2012.svg.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            animation: zoomPulse 3s infinite;
-        }
-        .android-logo {
-            width: 100px;
-            height: 100px;
-            background-image: url('https://cdn.freebiesupply.com/logos/large/2x/android-logo-png-transparent.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            animation: zoomPulse 3s infinite;
-        }
-        .loading-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border-radius: 50%;
-            margin: 0 5px;
-            animation: dotPulse 1.5s infinite;
-        }
-        .dot:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        .dot:nth-child(3) {
-            animation-delay: 1s;
-        }
-        @keyframes zoomPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #000000;
+        color: #fff;
+        font-family: "Share Tech Mono", monospace;
+        overflow: hidden;
+      }
+
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        cursor: pointer;
+      }
+
+      #enterText {
+        font-size: 2rem;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .desktop-background {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+      }
+
+      .static-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      header h1 {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        color: #ffffff;
+      }
+
+      .icon-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 1rem 0;
+      }
+
+      .icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        margin: 0 1rem;
+      }
+
+      .icon img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+
+      .icon img:hover {
+        transform: scale(1.1);
+      }
+
+      .icon p {
+        margin-top: 0.5rem;
+        color: #ffffff;
+      }
+
+      .team-label {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #ffffff;
+        margin-top: 1rem;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.5rem;
+      }
+
+      a:hover {
+        color: #a5a5a5;
+      }
     </style>
-</head>
-<body class="h-full overflow-hidden bg-cover bg-center bg-blue-100" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://files.catbox.moe/o69bqd.jpg');">
-    <div id="boot-screen" class="boot-screen">
-        <div id="boot-logo" class="windows-logo"></div>
-        <p id="boot-text" class="text-white text-xl font-semibold mt-8">Booting Windows</p>
-        <div class="loading-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </div>
+  </head>
 
-    <div id="login-content" class="hidden fixed inset-0">
-        <div class="flex flex-col items-center justify-center h-full login-container">
-            <img src="cat.gif" alt="Profile" class="w-32 h-32 rounded-full mb-4 shadow-lg">
-            <h2 class="text-3xl font-semibold text-white">kl</h2>
-            <div class="rounded-lg p-8 w-80">
-                <form id="loginForm" class="space-y-4">
-                    <select id="passwordSelect" class="w-full px-4 py-2 rounded-md bg-zinc-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value="" disabled selected>Select password</option>
-                        <option value="password1">kiitycore134</option>
-                    </select>
-                </form>
-            </div>
-            <div id="loadingAnimation" class="hidden -mt-6">
-                <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
-            </div>
+  <body>
+    <div class="desktop-background">
+      <video class="background-video" autoplay muted loop>
+        <source src="https://files.catbox.moe/x6sbvq.mp4" type="video/mp4" />
+      </video>
+
+      <video class="static-overlay" autoplay muted loop>
+        <source src="https://files.catbox.moe/wkpt69.mp4" type="video/mp4" />
+      </video>
+
+      <header>
+        <h1>stole.cc</h1>
+      </header>
+
+      <div class="icon-container">
+        <div class="icon">
+          <img src="https://files.catbox.moe/5taohc.png" alt="kl" />
+          <p>kl</p>
+          <a href="#" onclick="openInNewTab('https://t.me/kodexegirl'); return false;">telegram</a>
         </div>
 
-        <div class="fixed bottom-8 right-12 flex space-x-4">
-            <button class="text-white hover:text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
-                </svg>
-            </button>
-            <button class="text-white hover:text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" version="1.1" id="Capa_1" class="h-6 w-6" viewBox="0 0 575.279 575.279" xml:space="preserve">
-                    <g>
-                        <g>
-                            <path d="M238.502,115.644v-46.98C120.943,91.644,31.94,195.39,31.94,319.578c-0.003,140.994,114.707,255.701,255.7,255.701    c140.992,0,255.699-114.707,255.699-255.701c0-124.188-89.006-227.934-206.561-250.915v46.98    c92.047,22.182,160.662,105.172,160.662,203.935c0,115.686-94.113,209.803-209.8,209.803    c-115.687,0-209.803-94.117-209.803-209.803C77.837,220.816,146.455,137.826,238.502,115.644z"/>
-                            <path d="M312.298,256.905V111.274V65.089V24.658C312.298,11.041,301.261,0,287.64,0c-13.62,0-24.657,11.041-24.657,24.658v40.432    v46.185v145.631c0,13.617,11.037,24.658,24.657,24.658C301.261,281.563,312.298,270.522,312.298,256.905z"/>
-                        </g>
-                    </g>
-                </svg>
-            </button>
+        <div class="icon">
+          <img src="https://files.catbox.moe/39l4z6.png" alt="vent" />
+          <p>vent</p>
+          <a href="#" onclick="openInNewTab('https://t.me/stoplurkingofficer'); return false;">telegram</a>
         </div>
+      </div>
+
+      <div class="team-label">
+        <a href="#" onclick="openInNewTab('https://t.me/kittycored'); return false;">t.me/kittycored</a>
+      </div>
+
+      <div id="overlay" onclick="proceed()">
+        <div id="enterText">click to proceed</div>
+      </div>
+
+      <audio id="backgroundMusic" loop>
+        <source src="audio/1.mp3" type="audio/mp3" />
+      </audio>
     </div>
 
     <script>
-        window.addEventListener('load', function() {
-            const isMobile = window.innerWidth <= 728;
-            const bootLogo = document.getElementById('boot-logo');
-            const bootText = document.getElementById('boot-text');
+      function proceed() {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
 
-            if (isMobile) {
-                bootLogo.classList.remove('windows-logo');
-                bootLogo.classList.add('android-logo');
-                bootText.textContent = 'Booting Android';
-            } else {
-                bootLogo.classList.add('windows-logo');
-                bootText.textContent = 'Booting Windows';
-            }
-
-            setTimeout(function() {
-                document.getElementById('boot-screen').style.opacity = '0';
-                document.getElementById('boot-screen').style.transition = 'opacity 1s ease-out';
-                setTimeout(function() {
-                    document.getElementById('boot-screen').style.display = 'none';
-                    document.getElementById('login-content').classList.remove('hidden');
-                }, 1000);
-            }, 5000);
+        const audio = document.getElementById("backgroundMusic");
+        audio.play().catch((error) => {
+          console.error("Error playing audio:", error);
         });
+      }
 
-        document.getElementById('passwordSelect').addEventListener('change', function(e) {
-            if (e.target.value === 'password1') {
-                document.getElementById('loginForm').classList.add('hidden');
-                document.getElementById('loadingAnimation').classList.remove('hidden');
-                
-                setTimeout(() => {
-                    document.getElementById('loadingAnimation').classList.add('animate-pulse');
-                }, 2000);
-
-                setTimeout(() => {
-                    if (window.innerWidth <= 728) {
-                        window.location.href = 'user.html';
-                    } else {
-                        window.location.href = 'user.html';
-                    }
-                }, 4000);
-            }
-        });
-
-        window.addEventListener('load', function() {
-            const passwordSelect = document.getElementById('passwordSelect');
-            passwordSelect.selectedIndex = 0;
-        });
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-        });
+      function openInNewTab(url) {
+        window.open(url, "_blank");
+      }
     </script>
-</body>
+  </body>
 </html>
