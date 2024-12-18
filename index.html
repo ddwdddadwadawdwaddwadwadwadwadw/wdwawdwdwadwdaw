@@ -1,218 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:description" content="Stole.cc is a priv user wall">
-<meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/48/48854.png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stole.cc</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/48/48854.png" type="image/png">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: #000000;
-        color: #fff;
-        font-family: "Share Tech Mono", monospace;
-        overflow: hidden;
-      }
-
-      #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 999;
-        cursor: pointer;
-      }
-
-      #enterText {
-        font-size: 2rem;
-        color: #ffffff;
-        text-align: center;
-      }
-
-      .desktop-background {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-      }
-
-      .background-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -2;
-      }
-
-      .static-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.3;
-        z-index: -1;
-      }
-
-      header h1 {
-        margin-bottom: 2rem;
-        font-size: 1.5rem;
-        color: #ffffff;
-      }
-
-      .icon-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 400px;
-        margin: 1rem 0;
-      }
-
-      .icon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        margin: 0 1rem;
-      }
-
-      .icon img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        transition: transform 0.3s;
-      }
-
-      .icon img:hover {
-        transform: scale(1.1);
-      }
-
-      .icon p {
-        margin-top: 0.5rem;
-        color: #ffffff;
-      }
-
-      .team-label {
-        text-align: center;
-        font-size: 0.8rem;
-        color: #ffffff;
-        margin-top: 1rem;
-      }
-
-      a {
-        color: #ffffff;
-        text-decoration: none;
-        display: block;
-        margin-top: 0.5rem;
-      }
-
-      a:hover {
-        color: #a5a5a5;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="desktop-background">
-      <video class="background-video" autoplay muted loop>
-        <source src="https://files.catbox.moe/x6sbvq.mp4" type="video/mp4" />
-      </video>
-
-      <video class="static-overlay" autoplay muted loop>
-        <source src="https://files.catbox.moe/wkpt69.mp4" type="video/mp4" />
-      </video>
-
-      <header>
-        <h1>stole.cc</h1>
-      </header>
-
-      <div class="icon-container">
-        <div class="icon">
-          <img src="https://files.catbox.moe/5taohc.png" alt="kl" />
-          <p>kl</p>
-          <a href="#" onclick="openInNewTab('https://t.me/kodexegirl'); return false;">telegram</a>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen">
+        <div class="monitor">
+            <div class="content">
+                <span class="static">Coming soon </span>
+                <div class="glitch-text">.gg/robbed</div>
+            </div>
         </div>
-
-        <div class="icon">
-          <img src="https://files.catbox.moe/39l4z6.png" alt="vent" />
-          <p>vent</p>
-          <a href="#" onclick="openInNewTab('https://t.me/stoplurkingofficer'); return false;">telegram</a>
-        </div>
-      </div>
-      
-   <div class="icon">
-          <img src="proxy.gif" alt="vent" />
-          <p>proxy</p>
-          <a href="#" onclick="openInNewTab('https://t.me/bleedable'); return false;">telegram</a>
-        </div>
-        <div class="icon">
-          <img src="crashout.png" alt="vent" />
-          <p>crashout</p>
-          <a href="#" onclick="openInNewTab('https://t.me/iwonderwhen'); return false;">telegram</a>
-        </div>
-        <div class="icon">
-          <img src="sq2.png" alt="vent" />
-          <p>sq2</p>
-          <a href="#" onclick="openInNewTab('https://t.me/sq2spill'); return false;">telegram</a>
-        </div>
-      </div>
-
+        <div class="keyboard"></div>
+        <div class="timer" id="countdown"></div>
     </div>
-      </div>
-      
-      
-      
-      <div class="team-label">
-        <a href="#" onclick="openInNewTab('https://t.me/kittycored'); return false;">t.me/kittycored</a>
-      </div>
-
-      <div id="overlay" onclick="proceed()">
-        <div id="enterText">click to proceed</div>
-      </div>
-
-      <audio id="backgroundMusic" preload="auto" loop>
-        <source src="audio/1.mp3" type="audio/mp3" />
-      </audio>
-    </div>
-
     <script>
-      function proceed() {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "none";
+        const targetDays = 1;
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + targetDays);
 
-        const audio = document.getElementById("backgroundMusic");
-        audio.play().then(() => {
-          console.log("Audio playback started successfully.");
-        }).catch((error) => {
-          console.error("Audio playback failed:", error);
-          alert("Audio playback could not start. Please click again.");
-        });
-      }
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
 
-      function openInNewTab(url) {
-        window.open(url, "_blank");
-      }
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "TIME'S UP!";
+            }
+        }, 1000);
     </script>
-  </body>
+</body>
 </html>
