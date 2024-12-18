@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="screen">
+    <div class="screen" onclick="playAudio()">
         <div class="monitor">
             <div class="content">
                 <span class="static">Coming soon </span>
@@ -17,6 +17,7 @@
         <div class="keyboard"></div>
         <div class="timer" id="countdown"></div>
     </div>
+    <audio id="audio" src="stole.mp3"></audio>
     <script>
         const targetDays = 1;
         const targetDate = new Date();
@@ -36,6 +37,13 @@
                 document.getElementById("countdown").innerHTML = "TIME'S UP!";
             }
         }, 1000);
+
+        function playAudio() {
+            const audio = document.getElementById("audio");
+            if (audio.paused) {
+                audio.play();
+            }
+        }
     </script>
 </body>
 </html>
