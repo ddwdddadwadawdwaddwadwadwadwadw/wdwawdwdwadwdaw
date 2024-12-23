@@ -1,249 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@stole.cc</title>
-  <style>
-    body {
-      font-family: 'CustomFont', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #000;
-    }
-
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('MC.otf') format('truetype');
-    }
-
-    .ascii-art {
-      font-family: 'Courier New', monospace;
-      color: red;
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 20px;
-      text-shadow: 0 0 10px red, 0 0 20px red;
-      white-space: pre-wrap;
-    }
-
-    input, button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid red;
-      background-color: #000;
-      color: white;
-      font-size: 18px;
-      font-family: 'CustomFont', Arial, sans-serif;
-      border-radius: 5px;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: red;
-    }
-
-    button:focus {
-      outline: none;
-    }
-
-    button.main-button {
-      display: inline-block;
-      width: 150px;
-      margin: 10px;
-      background-color: #111;
-      border: 2px solid red;
-      text-transform: uppercase;
-      box-shadow: 0 0 10px red;
-    }
-
-    button.main-button:hover {
-      background-color: red;
-      color: black;
-    }
-
-    #click-page, #main-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    #click-page {
-      background-color: #000;
-    }
-
-    #main-page {
-      background-image: url('tragic.png');
-      background-size: cover;
-      display: none;
-    }
-
-    #login-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: red;
-      width: 300px;
-    }
-
-    .glowing-text {
-      animation: glow 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red; }
-      100% { text-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red, 0 0 80px red; }
-    }
-
-    .plus-sign {
-      position: absolute;
-      font-size: 24px;
-      color: red;
-      pointer-events: none;
-      user-select: none;
-      z-index: 1000;
-      animation: float-plus 2s linear infinite;
-    }
-
-    @keyframes float-plus {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(100px, 100px); }
-    }
-  </style>
+    <title>@stole.cc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="god's hand">
+    <meta name="theme-color" data-react-helmet="true" content="#2B2D31">
+    <link rel="stylesheet" type="text/css" href="css/old.css">
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+    <style>
+        * {
+            font-family: "VCR OSD Mono", sans-serif;
+            color: white;
+        }
+        #random-gif {
+            width: 55px;
+            height: auto;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: #121212;
+            z-index: -2;
+            user-select: none;
+        }
+        .ascii-image {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5);
+            z-index: -2;
+            user-select: none;
+        }
+        .full-page-overlay {
+            position: absolute;
+            transition: opacity 1s ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            user-select: none;
+        }
+        .buttons-container {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
+        .buttons-container button {
+            margin: 0 5px;
+            background-color: rgba(5, 5, 5, 0);
+            color: #bfbfbf;
+            font-size: 12px; 
+            font-weight: 550;
+            border: 2px solid transparent; 
+            border-radius: 15px; 
+            padding: 5px 10px; 
+            cursor: pointer;
+            transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+            z-index: 1;
+        }
+        .buttons-container button:hover {
+            color: #ffffff; 
+            background-color: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+        }
+.text-container {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0); 
+    width: 30%;
+    text-align: center; 
+    background-color: rgba(5, 5, 5, 0);
+    z-index: 1;
+}
+        .text-container p {
+            color: #757575;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
+        .display-text, #random-gif, #pfp-image {
+            transition: opacity 1s ease-in-out;
+        }
+        #pfp-image {
+            width: 75px;
+            height: 75px;
+            opacity: 0;
+            object-fit: cover;
+            display: none;
+        }
+        #member-container {
+            display: none;
+            opacity: 0;
+            top: 5%;
+            transition: opacity 1s ease-in-out;
+        }
+        #main-container {
+            display: none;
+            opacity: 0;
+            top: 1%;
+            transition: opacity 1s ease-in-out;
+        }
+        #enter-container {
+            top: 7%;
+        }
+        .snowflake {
+            position: absolute;
+            display: block;
+            font-size: 16px;
+            color: #2A2A2A;
+            user-select: none;
+        }
+.quote-container {
+    position: fixed;
+    bottom: 15%; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+        .quote-container p {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="click-page">
-    <div class="ascii-art" id="ascii-blood">
-      _        _                
-  ___| |_ ___ | | ___   ___ ___ 
- / __| __/ _ \| |/ _ \ / __/ __|
- \__ \ || (_) | |  __/| (_| (__ 
- |___/\__\___/|_|\___(_)___\___|
-                                
+    <audio id="song" src="assets/song.mp3" autoplay loop></audio>
+
+    <div class="buttons-container" id="enter-container">
+        <button id="enter" onclick="startPage()">enter</button>
     </div>
-    <form id="login-form">
-      <label for="username">stole</label>
-      <input type="text" id="username" name="username" required>
-      
-      <label for="password">cc</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="button" id="login-button">Login</button>
-    </form>
-  </div>
-  <div id="main-page" style="display: none;">
-<pre class="ascii-art" id="ascii-main">
-.       .
-_.-'\          |\-"""-/|          /`-._
-_.-`     `.       /         \       ,'     '-._
- _.'           `._  ;   \   /   ;   _,'           `._
-.'                 `-.:           :.-'                 `.
-,`                           , ,                           '.
-,`                                                             '.
-/                                  Stole.cc                                \
-:,-"""-,                                                     ,-"""-,:
-/'       `                                                   '       '\
-:                                                   :
-: ,-"""-,                                   ,-"""-, :
-/'       `.       _.-'         '-._       .'       '\
-\    .`    :       :    '.    /
-. .`       :     :       '. .
-:/          :   :          \:
-:            : :            :
-:
-</pre>
-<Center>
-    <div class="buttons">
-      <button class="main-button" id="history-btn">History</button>
-      <button class="main-button" id="hoa-btn">HOA</button>
+
+    <div class="buttons-container" id="member-container">
+        <button onclick="bmw43()">bmw43</button>
+        <p>◦</p>
+        <button onclick="noire()">stole.cc</button>
+        <p>◦</p>
+        <button ```html
+onclick="com()">com</button>
     </div>
-    <button class="main-button" id="users-btn">Users</button>
-	<script src="assets/snow.js"></script>
-    <audio id="background-music" preload="auto">
-      <source src="stole.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-  <script>
-    document.getElementById('login-button').addEventListener('click', function() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      if (username === "stole" && password === "cc") {
-        document.getElementById('click-page').style.display = 'none';
-        document.getElementById('main-page').style.display = 'flex';
-        document.getElementById('background-music').play();
-      } else {
-        alert("Incorrect username or password");
-      }
-    });
 
-    document.addEventListener('mousemove', function(event) {
-      const plusSign = document.createElement('div');
-      plusSign.classList.add('plus-sign');
-      plusSign.textContent = '+';
-      plusSign.style.left = event.pageX + 'px';
-      plusSign.style.top = event.pageY + 'px';
-      document.body.appendChild(plusSign);
-      setTimeout(() => {
-        plusSign.remove();
-      }, 2000);
-    });
+    <div class="buttons-container" id="main-container">
+        <button onclick="about()">about</button>
+        <p>◦</p>
+        <button onclick="telegram()">session</button>
+        <p>◦</p>
+       
+    </div>
 
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-        alert('Stop trying to skid!');
-        event.preventDefault();
-      }
-    });
+    <div class="background">
+        <div class="ascii-image" id="image">
+            <img id="random-gif" style="width: 55px; height: auto;">
+            <img id="pfp-image">
+        </div>
 
-    (function() {
-      const originalConsoleLog = console.log;
-      const originalConsoleError = console.error;
-      Object.defineProperty(console, 'log', {
-        value: function() {
-          originalConsoleLog('GG Skid');
+        <div class="full-page-overlay">
+            <img src="https://r2.interrupted.me/F/IP7h5Pne.png">
+        </div>
+    </div>
+
+    <div class="quote-container" id="quote-container">
+        <p class="quote-text"></p>
+    </div>
+
+    <div class="text-container">
+        <p class="display-text">good in the evil <3 </p>
+    </div>
+
+    <div class="snowflakes"></div>
+
+    <script src="scripts/snowflakes.js"></script>
+    <script src="scripts/index.js"></script>
+<script>
+    let transitionActive = false;
+    var song = document.getElementById("song");
+    var current_page = "main";
+
+    var songList = [
+        "https://r2.interrupted.me/F/QgrHcBd9.mp3",
+        "https://r2.interrupted.me/F/DReihIGF.mp3",
+        "https://r2.interrupted.me/F/EzrDmIBr.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/Uiws8GeC.mp3",
+        "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/0TOJ1N1l.mp3",
+        "https://r2.interrupted.me/F/0TOJ1N1l.mp3",
+        "https://r2.interrupted.me/F/0TOJ1N1l.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/8xGLntzL.mp3"
+    ];
+
+    function getRandomSong() {
+        var randomIndex = Math.floor(Math.random() * songList.length);
+        return songList[randomIndex];
+    }
+
+    function startMusic() {
+        var selectedSong = getRandomSong();
+        song.src = selectedSong;
+        song.loop = true;
+        song.volume = 0;
+        song.playbackRate = 1; // Normal speed
+        song.play();
+
+        var fadeInInterval = setInterval(function () {
+            song.volume += 0.1;
+            if (song.volume >= 0.7) {
+                song.volume = 0.7;
+                clearInterval(fadeInInterval);
+            }
+        }, 350);
+    }
+
+    function startHome() {
+        if (transitionActive) return;
+        transitionActive = true;
+
+        const displayText = document.querySelector('.display-text');
+        displayText.style.opacity = 0;
+
+        setTimeout(() => {
+            displayText.innerHTML = getRandomSentence();
+            displayText.style.opacity = 1;
+            transitionActive = false;
+        }, 2000);
+    }
+
+    function startPage() {
+        const enterButton = document.getElementById("enter-container");
+        enterButton.style.transition = "opacity 1s ease-in-out";
+        enterButton.style.opacity = 0;
+
+        setTimeout(() => {
+            const memberButtons = document.getElementById("member-container");
+            const mainButtons = document.getElementById("main-container");
+            memberButtons.style.display = "flex";
+            mainButtons.style.display = "flex";
+
+            requestAnimationFrame(() => {
+                memberButtons.style.transition = "opacity 1s ease-in-out";
+                memberButtons.style.opacity = 1;
+                mainButtons.style.transition = "opacity 1s ease-in-out";
+                mainButtons.style.opacity = 1;
+            });
+
+            enterButton.style.display = "none";
+        }, 1000);
+
+        startMusic();
+        setTimeout(startHome, 1000);
+        startQuotes();
+    }
+
+    function startQuotes() {
+        const quotes = [
+            "i <strong>will</strong>, but at what <strong>cost</strong>?<br>- To win is easy, but to win without sacrifice is impossible.",
+            "i <strong>could</strong>, but is it <strong>worth it</strong>?<br>- Some victories leave scars that outlast the reward.",
+            "i <strong>see</strong>, but do i <strong>act</strong>?<br>- Knowledge without action is like a blade left to rust.",
+            "you <strong>ask</strong>, but do you <strong>deserve</strong>?<br>- Not all who demand respect are worthy of receiving it.",
+            "i <strong>trust</strong>, but at whose <strong>expense</strong>?<br>- Loyalty given too freely becomes a weapon turned against you.",
+            "i <strong>wait</strong>, but for <strong>how long</strong>?<br>- Opportunity knocks, but hesitation bars the door.",
+            "i <strong>speak</strong>, but will they <strong>listen</strong>?<br>- A voice without weight is just noise in the wind.",
+            "<strong>strength</strong> is not in what you <strong>hold</strong>, but in what you <strong>withstand</strong>.<br>- True power is measured by what you endure, not what you control.",
+            "<strong>control</strong> is not given, it is <strong>earned</strong>.<br>- Those who cannot lead themselves will never lead others.",
+            "<strong>silence</strong> speaks when words <strong>fail</strong>.<br>- Sometimes the loudest statement is the one left unsaid."
+        ];
+
+        let currentQuoteIndex = 0;
+        const quoteContainer = document.getElementById("quote-container");
+        const quoteText = document.querySelector(".quote-text");
+
+        function showQuote() {
+            quoteText.innerHTML = quotes[currentQuoteIndex];
+            quoteContainer.style.opacity = 1;
+
+            setTimeout(() => {
+                quoteContainer.style.opacity = 0;
+            }, 6000); 
+
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            setTimeout(showQuote, 9000);
         }
-      });
 
-      Object.defineProperty(console, 'error', {
-        value: function() {
-          originalConsoleError('GG Skid');
+        showQuote();
+    }
+
+    function memberCall(pfpSrc, textContent, user) {
+        if (transitionActive) return;
+        transitionActive = true;
+
+        if (current_page === "member") {
+            const displayText = document.querySelector(".display-text");
+            const pfpImage = document.getElementById("pfp-image");
+
+            displayText.innerHTML = textContent;
+            document.title = "@evx; " + user;
+            pfpImage.src = pfpSrc;
+
+            transitionActive = false;
+        } else {
+            current_page = "member";
+            document.title = "@evx; " + user;
+            const displayText = document.querySelector(".display-text");
+            const randomGif = document.getElementById("random-gif");
+            const pfpImage = document.getElementById("pfp-image");
+
+            pfpImage.style.display = "block";
+            pfpImage.style.opacity = 1;
+
+            displayText.innerHTML = textContent;
+            pfpImage.src = pfpSrc;
+            randomGif.style.display = "none";
+
+            transitionActive = false;
         }
-      });
+    }
 
-      document.addEventListener('contextmenu', function(event) {
-        event.preventDefault();
-        alert('Stop trying to skid!');
-      });
+    function noire() {
+        memberCall(
+            "https://images-ext-1.discordapp.net/external/CpAgZ5-7C_2pU83DxvMMJ8gS-EssFeLdy7g-LxOtwdg/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1313572818125848706/a_b753ad2f8308143138dea2f7c4fb2f15.gif",
+            "dead",
+            "kl"
+        );
+    }
 
-      Object.defineProperty(document, 'domain', {
-        get: function() {
-          return 'GG Skid';
+    function com() {
+        memberCall(
+            "https://r2.interrupted.me/F/VbJi1QSD.png",
+            "breaking",
+            "com"
+        );
+    }
+
+    function bmw43() {
+        memberCall(
+            "https://r2.interrupted.me/F/OpbkDVWg.jpg",
+            "dying",
+            "bmw43"
+        );
+    }
+
+    function about() {
+        updatePage(
+            "<a href='https://t.me/' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
+            "about"
+        );
+    }
+
+    function telegram() {
+        window.open("getsession.org", "_blank");
+    }
+
+    function pgp() {
+        window.open("https:sachi.lol/pgp.txt", "_blank");
+    }
+
+    function updatePage(htmlContent, pageTitle) {
+        if (transitionActive) return;
+        transitionActive = true;
+        document.title = "@evx; " + pageTitle;
+        const displayText = document.querySelector(".display-text");
+
+        if (current_page !== "main") {
+            current_page = "main";
+            const randomGif = document.getElementById("random-gif");
+            const pfpImage = document.getElementById("pfp-image");
+
+            pfpImage.style.opacity = 0;
+            randomGif.style.display = "block";
+            randomGif.style.opacity = 1;
+            displayText.innerHTML = htmlContent;
+            pfpImage.style.display = "none";
+            displayText.style.opacity = 1;
+
+            transitionActive = false;
+        } else {
+            displayText.innerHTML = htmlContent;
+            transitionActive = false;
         }
-      });
-    })();
+    }
 
-    document.getElementById('history-btn').addEventListener('click', function() {
-      window.location.href = 'https://example.com/history';
-    });
+    function getRandomSentence() {
+        const sentences = [
+            "@ <a href='https://t.me/coffinsniffer' target='_blank' style='color: white;'>god's</a> right hand"
+        ];
+        const randomIndex = Math.floor(Math.random() * sentences.length);
+        return sentences[randomIndex];
+    }
 
-    document.getElementById('hoa-btn').addEventListener('click', function() {
-      window.location.href = 'http://stole.cc/hoa.html';
-    });
+    var gifs = [
+        "https://r2.interrupted.me/F/edg44KkU.gif",
+        "https://r2.interrupted.me/F/jaEOenD8.gif",
+        "https://r2.interrupted.me/F/IFBodsEw.gif"
+    ];
 
-    document.getElementById('users-btn').addEventListener('click', function() {
-      window.location.href = 'https://example.com/users';
-    });
-  </script>
+    function setRandomGif() {
+        var randomIndex = Math.floor(Math.random() * gifs.length);
+        var randomGif = gifs[randomIndex];
+        document.getElementById("random-gif").src = randomGif;
+
+        document.body.setAttribute("data-current-gif", randomGif);
+
+        updateButtonHoverColor();
+    }
+
+    setRandomGif();
+
+    function updateButtonHoverColor() {
+        var currentGif = document.body.getAttribute("data-current-gif");
+        var buttons = document.querySelectorAll(".buttons-container button");
+
+        buttons.forEach(function(button) {
+            button.setAttribute("data-gif", currentGif);
+        });
+    }
+</script>
 </body>
 </html>
