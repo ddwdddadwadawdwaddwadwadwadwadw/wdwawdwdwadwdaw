@@ -2,178 +2,385 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kl | stole.cc</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Press Start 2P', monospace;
-            color: rgb(255, 0, 0);
-            cursor: pointer;
-        }
-
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .profile-card {
-            width: 300px;
-            padding: 15px;
-            background-color: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            border: 2px solid white;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .profile-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-bottom: 10px;
-        }
-
-        .profile-card h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .profile-card p {
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        .description-box {
-            margin-top: 10px;
-            padding: 8px;
-            background-color: #333;
-            border: 2px solid white;
-            border-radius: 5px;
-            width: 100%;
-            height: auto;
-            resize: none;
-            font-size: 14px;
-            color: #fff;
-            background-color: #1e1e1e;
-            transition: background-color 0.3s ease;
-            line-height: 1.5;
-        }
-
-        .description-box:focus {
-            background-color: #444;
-            outline: none;
-        }
-
-        .nav-links {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 12px;
-            padding: 5px 10px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: #444;
-        }
-
-        .header {
-            position: absolute;
-            top: 10px;
-            width: 100%;
-            text-align: center;
-            animation: slideIn 1.5s ease-out;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 12px;
-            transition: text-shadow 0.3s ease;
-        }
-
-        a:hover {
-            color: #f0f0f0;
-            text-shadow: 0 0 10px white;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                color: white;
-            }
-            50% {
-                color: gray;
-            }
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="js.js">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1117499600698355903/1122557125235839149/269d5ee006eaece61be8e323087f495c.gif">
+    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="We love our creator!">
+    <meta name="keywords" content="homos">
+    <meta name="author" content="Stick">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="image" content="screech without background.ping">
 </head>
-<body>
-    <video class="background-video" autoplay loop muted>
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
 
-    <div class="profile-card">
-        <img src="https://images-ext-1.discordapp.net/external/1QR359llhgpGuz_hqgFZomqTiECiXx_MXhxup3l4KI8/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/456249376072007705/e6a7c42b69274f75b12b2119c1a941b8.webp?format=webp" alt="Profile Avatar">
-        <h2>kl</h2>
-        <p>Rank: Owner</p>
-        <p>Joined: Today</p>
-        <div class="nav-links">
-            <p>i love you all</p>
-        </div>
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    background-image: url(https://wallpapercave.com/wp/wp9817657.jpg);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container h1 {
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 5px;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  -webkit-text-stroke: 2px black;
+  -webkit-text-stroke-width: 2px;
+}
+
+.glass p {
+    font-size: 18px;
+    color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 0px black;
+}
+
+.container .auto-type {
+    font-style: italic;
+    text-decoration: underline;
+}
+  
+  .container #tiktok {
+    color: white;
+    font-size: 45px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+  }
+
+  .container #tiktok:hover {
+    font-size: 55px;
+  }
+
+  .container #twitter {
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+  }
+
+  .container #twitter:hover {
+    font-size: 55px;
+  }
+
+  .container #youtube {
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+  }
+
+  .container #youtube:hover {
+    font-size: 55px;
+  }
+
+  .container #discord {
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    position: absolute;
+    top: 65%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+  }
+
+  .container #discord:hover {
+    font-size: 55px;
+  }
+
+  .container #github {
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    position: absolute;
+    top: 65%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+  }
+
+  .container #github:hover {
+    font-size: 55px;
+  }
+
+  .glass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    width: 800px;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.01);
+    color: white;
+    z-index: 2;
+    border-radius: 15px;
+    padding: 29px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(5px);
+    -webkit-box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.09); 
+box-shadow: 0px 4px 7px 2px rgba(0,0,0,0.09);
+}
+
+.full-page-overlay {
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  user-select: none;
+}
+.buttons-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+.buttons-container button {
+  margin: 0 5px;
+  background-color: rgba(5, 5, 5, 0);
+  color: #bfbfbf;
+  font-size: 12px; 
+  font-weight: 550;
+  border: 2px solid transparent; 
+  border-radius: 15px; 
+  padding: 5px 100px; 
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+  z-index: 1;
+}
+.buttons-container button:hover {
+  color: #ffffff; 
+  background-color: rgba(255, 255, 255, 0.1); 
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+}
+.text-container {
+position: fixed;
+bottom: 5%;
+left: 50%;
+transform: translate(-50%, 0); 
+width: 30%;
+text-align: center; 
+background-color: rgba(5, 5, 5, 0);
+z-index: 1;
+}
+.text-container p {
+  color: #000000;
+  font-size: 14px;
+  margin: 0;
+  word-wrap: break-word;
+}
+.display-text, #random-gif, #pfp-image {
+  transition: opacity 1s ease-in-out;
+}
+</style>
+
+
+
+<Body>
+
+    <audio id="song" src="assets/song.mp3" autoplay loop></audio>
+
+    <div class="buttons-container" id="enter-container">
+        <button id="enter" onclick="startPage()">Click for Music</button>
     </div>
 
-    <audio id="background-audio">
-        <source src="video.mp4" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
+    <title>@k</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<script>
+$(document).ready(function(){
+    var titles = ['', '', ''];
 
-    <div class="footer">
-        <p>Stole.cc</p>
-    </div>
+    var timeInterval = 500;
 
-    <script>
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById('background-audio');
-            if (audio.paused) {
-                audio.play();
-            }
+    exec();
+
+    setInterval(function(){
+        exec();
+    }, timeInterval * titles.length);
+
+    function exec(){
+        $.each(titles, function(k, v){
+            setTimeout(function(){
+                $('title').html(v);
+            }, timeInterval * (k + 1));
         });
-    </script>
+    }
+
+});
+</script>
+
+
+
+
+
+    <div class="container">
+        <ul class="box-area">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+        <div class="glass">
+        <h1>kl</h1>
+        <a href="https://discordapp.com/users/1313572818125848706" target="_blank"><i id="discord" class="fa-brands fa-discord"></i></a>
+        <a href="https://www.youtube.com/@osinthq" target="_blank"><i id="youtube" class="fa-brands fa-youtube"></i></a>
+        <a href="https://t.me/coffinsniffer" target="_blank"><i id="twitter" class="fa-brands fa-telegram"></i></a>
+        <p><span class="auto-type"></span></p>
+</script>
+        
+    </div>
+    </div>
+    <script>
+        var typed = new Typed(".auto-type",{
+          strings : ["Owner"],
+          typeSpeed : 70,
+          backSpeed : 70,
+          looped : true
+        })
+      </script> 
+</body>
+<Body>
+
+    <title>why u cute?</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<script>
+$(document).ready(function(){
+    var titles = ['vile', 'bin', 'coffinsniffer'];
+
+    var timeInterval = 100;
+
+    exec();
+
+    setInterval(function(){
+        exec();
+    }, timeInterval * titles.length);
+
+    function exec(){
+        $.each(titles, function(k, v){
+            setTimeout(function(){
+                $('title').html(v);
+            }, timeInterval * (k + 1));
+        });
+    }
+
+});
+</script>
+<script>
+    let transitionActive = false;
+    var song = document.getElementById("song");
+    var current_page = "main";
+
+    var songList = [
+        "https://r2.interrupted.me/F/QgrHcBd9.mp3",
+        "https://r2.interrupted.me/F/DReihIGF.mp3",
+        "https://r2.interrupted.me/F/EzrDmIBr.mp3",
+        "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/0TOJ1N1l.mp3",
+        "https://r2.interrupted.me/F/7qlVAFm3.mp3",
+        "https://r2.interrupted.me/F/8xGLntzL.mp3"
+    ];
+
+    function getRandomSong() {
+        var randomIndex = Math.floor(Math.random() * songList.length);
+        return songList[randomIndex];
+    }
+
+    function startMusic() {
+        var selectedSong = getRandomSong();
+        song.src = selectedSong;
+        song.loop = true;
+        song.volume = 0;
+        song.playbackRate = 1; // Normal speed
+        song.play();
+
+        var fadeInInterval = setInterval(function () {
+            song.volume += 0.1;
+            if (song.volume >= 0.7) {
+                song.volume = 0.7;
+                clearInterval(fadeInInterval);
+            }
+        }, 350);
+    }
+
+    function startHome() {
+        if (transitionActive) return;
+        transitionActive = true;
+
+        const displayText = document.querySelector('.display-text');
+        displayText.style.opacity = 0;
+
+        setTimeout(() => {
+            displayText.innerHTML = getRandomSentence();
+            displayText.style.opacity = 1;
+            transitionActive = false;
+        }, 2000);
+    }
+
+    function startPage() {
+        const enterButton = document.getElementById("enter-container");
+        enterButton.style.transition = "opacity 1s ease-in-out";
+        enterButton.style.opacity = 0;
+
+        setTimeout(() => {
+            const memberButtons = document.getElementById("member-container");
+            const mainButtons = document.getElementById("main-container");
+            memberButtons.style.display = "flex";
+            mainButtons.style.display = "flex";
+
+            requestAnimationFrame(() => {
+                memberButtons.style.transition = "opacity 1s ease-in-out";
+                memberButtons.style.opacity = 1;
+                mainButtons.style.transition = "opacity 1s ease-in-out";
+                mainButtons.style.opacity = 1;
+            });
+
+            enterButton.style.display = "none";
+        }, 1000);
+
+        startMusic();
+        setTimeout(startHome, 1000);
+        startQuotes();
+    } 
+</script>
 </body>
 </html>
